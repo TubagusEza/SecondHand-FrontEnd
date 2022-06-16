@@ -1,0 +1,37 @@
+.logo {
+    background-color:#4B1979;
+    width: 105px;
+    height: 35px;
+    margin-left: 100px;
+
+}
+
+.navbar {
+    width: 100%;
+    display: flex;
+    position: sticky;
+    max-height: 84px;
+    color: black;
+    background: #FFFFFF;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.15)
+}
+
+.searchBar{
+    background: #EEEEEE;
+    border-radius: 16px;
+    width: 444px;
+    height: 35px;
+}
+
+.menu {
+    margin-left: -200px;
+    padding:0 1 rem;
+    justify-content:center;
+}
+.utama{
+    font-family: 'Poppins', sans-serif;
+    color: black;
+    font-size: 16px;
+    font-weight: 400;
+}
+

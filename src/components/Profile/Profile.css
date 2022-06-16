@@ -1,0 +1,18 @@
+.profile {
+    display: flex;
+    margin-top: 75px;
+    width: 100%;
+}
+
+.box{
+    background-color: #E2D4F0;
+    width: 96px;
+    height: 96px;
+    border-radius: 12px;
+    margin-left: 10px;
+}
+
+.button{
+    padding-top: 60%;
+    padding-bottom: 50%;
+}
