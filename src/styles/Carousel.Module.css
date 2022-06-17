@@ -1,0 +1,33 @@
+.card-carousel {
+    margin-top: 10px;
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+}
+
+.owl-lazy {
+    border-radius: 16px;
+}
+/* 
+.owl-prev {
+    width: 32px;
+    margin-right: 100px;
+} */
+
+.owl-prev {
+    width: 10px;
+    height: 30px;
+    position: absolute;
+    top: 40%;
+    margin-left: -10px;
+    display: block !important;
+}
+
+.owl-next {
+    width: 10px;
+    height: 30px;
+    position: absolute;
+    top: 40%;
+    left: 500px;
+    display: block !important;
+}
