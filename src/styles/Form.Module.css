@@ -1,0 +1,70 @@
+.profile {
+    top: 20px;
+    justify-content: center;
+    position: relative;
+    max-width: 50%;
+    max-height: 50%;
+}
+
+.arrow {
+    background-color: transparent;
+    color: black;
+    border-color: transparent;
+}
+
+.arrow:hover {
+    background-color: transparent;
+    color: black;
+    border-color: transparent;
+}
+
+.form-camera {
+    background-color: #E2D4F0;
+    border-radius: 12px;
+    width: 96px;
+    height: 96px;
+    justify-content: center;
+    border-color: #E2D4F0;
+}
+
+.form-camera:hover {
+    background-color: #E2D4F0;
+    border-radius: 12px;
+}
+
+.form-button {
+    justify-content: center;
+    width: 98%;
+    height: 50px;
+    margin: 10px;
+    background-color: #7126B5;
+    outline: #7126B5;
+    color: white;
+    border-radius: 16px;
+}
+
+.form-button:hover {
+    background-color: #7126B5;
+    color: white;
+    outline: #7126B5;
+}
+
+.form-group {
+    margin: 10px;
+}
+
+.text-name,
+.text-city,
+.text-phone {
+    border: 1px solid #D0D0D0;
+    border-radius: 16px;
+    height: 48px;
+    color: #8A8A8A;
+    text-align: left;
+}
+
+.text-address {
+    height: 100px;
+    border: 1px solid #D0D0D0;
+    border-radius: 16px;
+}

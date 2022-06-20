@@ -1,0 +1,21 @@
+.login-form {
+  margin: 0;
+  position: relative;
+  top: 50%;
+  -ms-transform: translateY(-20%);
+  transform: translateY(-80%);
+  text-align: left;
+}
+
+/* Form.Label {
+  text-align: left;
+} */
+
+/* .btn-primary {
+  background-color: #7126B5;
+  width: 600px;
+} */
+
+.text-register {
+  text-align: center;
+}

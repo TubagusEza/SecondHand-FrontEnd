@@ -1,0 +1,60 @@
+.card-modal {
+    width: 360px;
+    height: 438px;
+    -webkit-border-radius: 16px !important;
+    -moz-border-radius: 16px !important;
+    border-radius: 16px !important; 
+    overflow: hidden;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.15);
+}
+
+h5 {
+    font-size: 14px;
+}
+
+p {
+    font-size: 14px;
+}
+
+.modal-button {
+    justify-content: center;
+    width: 330px;
+    height: 50px;
+    margin: 10px;
+    background-color: #7126B5;
+    outline: #7126B5;
+    color: white;
+    border-radius: 16px;
+}
+
+.modal-button:hover {
+    background-color: #7126B5;
+    color: white;
+    outline: #7126B5;
+}
+
+.product {
+    padding-top: 15px;
+    margin-bottom: 10px;
+    background-color: #EEEEEE;
+    border-radius: 16px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.15);
+}
+
+.seller {
+    width: 100%;
+}
+
+.label {
+    font-size: 12px;
+    color: black;
+    font-weight: bold;
+}
+
+.nav-button {
+    height: 50px;
+    width: 25px;
+    cursor: pointer;
+    position: absolute;
+    top: 110px !important;
+}
