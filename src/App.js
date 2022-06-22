@@ -9,6 +9,8 @@ import Register from "./pages/Register";
 import Profile from './pages/Profile'
 import SellerProductPage from './pages/SellerProduct'
 import BuyerProductPage from './pages/BuyerProduct'
+import ListSell from './pages/ListSell';
+import ButtonName from './components/Seller/Card/CardButtonName';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
@@ -20,6 +22,7 @@ function App() {
           <Route path='/profile' element={<Profile />} />
           <Route path='/seller/product/:id' element={<SellerProductPage />} />
           <Route path='/buyer/product/:id' element={<BuyerProductPage />} />
+          <Route path="/side" element={<ListSell />} />
         </Routes>
       </BrowserRouter>
   );

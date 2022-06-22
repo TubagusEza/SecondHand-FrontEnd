@@ -1,0 +1,37 @@
+* {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 24px;
+}
+.seller {
+    display: flex;
+    border-radius: 12px;
+    width: 100%;
+}
+
+.cards-button{
+    display: flex;
+    max-height: 100px;
+    border-radius: 16px;
+    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.15);
+}
+
+.button-name {
+    justify-content: center;
+    width: 100%;
+    height: 30px;
+    margin: 10px;
+    border-color: #7126B5;
+    background-color: white;
+    color: black;
+    border-radius: 8px;
+    display: flex;
+}
+
+h5 {
+    font-weight: bold;
+    text-align: left;
+    font-size: 20px;
+}
