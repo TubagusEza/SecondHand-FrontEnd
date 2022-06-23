@@ -18,8 +18,7 @@ const ListSell = () => {
     <>
     <NavbarLogIn/>
       <Container >
-        <Row >
-        
+        <Row >   
       <ButtonName/>
         <Container className='mt-5'>
           <Row>

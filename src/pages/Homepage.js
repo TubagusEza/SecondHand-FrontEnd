@@ -4,6 +4,7 @@ import ItemCard from "../components/Homepage/ItemCard";
 import BtnAddProduct from "../components/Homepage/BtnAddProduct";
 import { useEffect } from "react";
 import { Container, Row, Col, Button } from "react-bootstrap";
+import NavbarHeader from "../components/Navbar/NavbarHeader";
 
 import { IMAGES } from "../data/data"
 const Homepage = () => {
@@ -13,6 +14,7 @@ const Homepage = () => {
 
   return (
     <>
+    <NavbarHeader/>
       <Container fluid>
         <div className="row mt-3">
           <div className="col">

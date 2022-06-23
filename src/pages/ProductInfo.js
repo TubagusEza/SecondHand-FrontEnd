@@ -10,6 +10,7 @@ import ProductInfo from '../components/Seller/Form/Form'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../components/Profile/Form.Module.css';
 import '../styles/App.css';
+import NavbarProduct from '../components/Navbar/NavbarProduct';
 
 function ProfileUser() {
   useEffect(() => {
@@ -19,6 +20,7 @@ function ProfileUser() {
 
   return (
     <>
+    <NavbarProduct/>
       <Container>
       <div style={{ paddingTop: '30px' }}>
         <Link to='/seller/product/:id' style={{ color: 'black' }}>

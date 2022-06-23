@@ -1,5 +1,5 @@
 import React from 'react'
-import { Navbar, Container,Nav, Form, FormControl} from 'react-bootstrap'
+import { Navbar, Container,Nav, Form, input} from 'react-bootstrap'
 import {FaSearch} from 'react-icons/fa';
 import './Navbar.Module.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -11,14 +11,14 @@ import {FaListUl} from 'react-icons/fa';
 
 export default function NavbarLogIn() {
        return (  
-                 <Navbar Navbar className="ms-auto navbar"bg="white" expand="lg">
+                 <Navbar className="ms-auto navbar"bg="white" expand="lg">
                     <Container fluid className='me-3'>
                     <Navbar.Brand href="#home" className='logo' ></Navbar.Brand>
                    
                         <Navbar.Toggle aria-controls="basic-navbar-nav" />
                         <Navbar.Collapse id="basic-navbar-nav">
                         <Form className="d-flex test">
-                            <FormControl
+                            <input
                                 type="search"
                                 placeholder="Cari di sini..."
                                 className="me-2 searchBar"

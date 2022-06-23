@@ -45,12 +45,14 @@
 }
 
 .menu {
+    border-color: #7126B5;
     background-color: #7126B5;
     display: flex;
     border-radius: 12px;
     width: 105px;
     height: 35px;
     justify-content: space-around;
+    color: white;
 }
 
 .NavLink {
