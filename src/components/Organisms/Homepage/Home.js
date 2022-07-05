@@ -1,6 +1,6 @@
 /* eslint-disable array-callback-return */
 // import axios from 'axios';
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { Container, Col } from 'react-bootstrap';
 import { useSelector, useDispatch } from 'react-redux';
 import { getListProducts } from '../../../redux/actions/product';
@@ -11,30 +11,26 @@ import ItemCard from '../../Moleculs/Card/ItemCard';
 import BtnAddProduct from '../../Atoms/Button/BtnAddProduct';
 import IMAGES from '../../../data/data';
 import './Home.Module.css';
+import axios from 'axios';
 
 function Home() {
-  const [product, setProduct] = useState([]);
   const dispatch = useDispatch();
+  const [product, setProduct] = useState([]);
   const {
-    productLoading,
     productResult,
-    productError,
-  // eslint-disable-next-line arrow-body-style
   } = useSelector((state) => state.getProductReducer);
 
+  const fetchData = useCallback(async () => {
+    const res = await axios.get('https://second-hand-be.herokuapp.com/api/products');
+    console.log(res.data.data.data)
+    // setProduct(productResult);
+    setProduct(res.data.data.data);
+  }, [])
+
   useEffect(() => {
-    dispatch(getListProducts());
-    if (productLoading) {
-      console.log('Loading...');
-    } else if (productResult) {
-      setProduct(productResult);
-      console.log(productResult);
-    } else if (productError) {
-      console.log(productError);
-    }
-    // getUsers();
-    window.localStorage.getItem('token');
-  }, [product]);
+    fetchData()
+      .catch(console.error);;
+  }, [fetchData]);
 
   return (
     <Container fluid>
