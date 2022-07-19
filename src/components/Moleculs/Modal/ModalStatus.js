@@ -19,6 +19,7 @@ function ModalStatus(props) {
   } = useSelector((state) => { return state.updateTransactionConfirmationReducer; });
 
   const handleSubmit = async (e) => {
+    e.preventDefault();
     console.log(confirmation);
     console.log(props.buyerOrder);
     await dispatch(updateConfirmation(props.buyerOrder.id, confirmation));

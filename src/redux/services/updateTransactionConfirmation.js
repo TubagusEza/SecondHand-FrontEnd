@@ -3,7 +3,7 @@ import axios from 'axios';
 const token = localStorage.getItem('token');
 
 export default function updateTransactionConfirmation(id, request) {
-  console.log(id);
+  console.log(id, request);
   const requestBody = {
     isCanceled: request,
   };

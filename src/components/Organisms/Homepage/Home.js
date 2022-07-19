@@ -37,7 +37,6 @@ function Home({
       );
       const dataUsers = await responseUsers;
       setUserData(dataUsers);
-      console.log(dataUsers.data.id, 'line 55');
     } catch (err) {
       console.log(err);
     }

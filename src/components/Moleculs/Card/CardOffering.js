@@ -17,10 +17,9 @@ function CardHistory(props) {
   const [modalShow, setModalShow] = useState(false);
   const [btnAccReject, setBtnAccReject] = useState(false);
   const [btnStatus, setBtnStatus] = useState(false);
-  const [hiddenButton, setHiddenButton] = useState(false);
 
   const {
-    title, name, price, image, imageAlt, offering,
+    title, name, price, image, imageAlt, offering, buyerNumber,
   } = props;
   const dispatch = useDispatch();
 
@@ -46,14 +45,9 @@ function CardHistory(props) {
     }
   };
 
-  const handleHiddenButton = (e) => {
-    setHiddenButton(true);
-  };
-
   useEffect(() => {
     offeringCardBtnHandler();
-    handleHiddenButton();
-  }, [hiddenButton]);
+  }, []);
 
   return (
     <Container>
@@ -91,8 +85,8 @@ function CardHistory(props) {
                     buyerInfo={props.buyerInfo}
                     buyerCity={props.buyerCity}
                     buyerImg={props.buyerImg}
-                    buyerNumber={props.buyerNumber}
                     show={modalShow}
+                    buyerNumber={buyerNumber}
                     onHide={() => { return setModalShow(false); }}
                   />
                 </>
@@ -106,7 +100,7 @@ function CardHistory(props) {
                 buyerOrder={props.buyerOrder}
                 buyerNumber={props.buyerNumber}
               />
-              <Button href={`https://wa.me/${props.buyerNumber}`} variant="secondary" className="button-accept">
+              <Button href={`https://wa.me/${props.buyerNumber}`} target="_blank" variant="secondary" className="button-accept">
                 Hubungi di
                 {' '}
                 <FaWhatsapp />
@@ -114,17 +108,6 @@ function CardHistory(props) {
             </div>
             )}
           </Col>
-          <div className="justify-content-end button-align">
-            {hiddenButton && (
-              <>
-                <Button variant="secondary" className="button-deny" onClick={handleHiddenButton} style={{ borderRadius: '16px' }}>Tolak</Button>
-                <VerticalModals
-                  show={modalShow}
-                  onHide={() => { return setModalShow(false); }}
-                />
-              </>
-            )}
-          </div>
         </Row>
       </Card>
     </Container>

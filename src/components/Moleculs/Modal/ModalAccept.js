@@ -15,7 +15,6 @@ import './Modal.Module.css';
 import priceFormat from '../../../utils/priceFormat';
 
 function VerticalModals(props) {
-  console.log(props);
   const [offering, setOffering] = useState('');
   const {
     transactionLoading,
@@ -75,7 +74,7 @@ function VerticalModals(props) {
         </Container>
         <Row>
           <Form onSubmit={handleSubmit}>
-            <Button href={`https://wa.me/${props.buyerNumber}`} onClick={props.onHide} className="modal-button">
+            <Button href={`https://wa.me/${props.buyerNumber}`} target="_blank" onClick={props.onHide} className="modal-button">
               Hubungi via Whatsapp
               {' '}
               <FaWhatsapp />

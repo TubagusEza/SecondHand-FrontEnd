@@ -48,9 +48,7 @@ function CardProduct(props) {
             </Link>
           </Row>
           <Row>
-            <Link to="/seller/sell">
-              <Button variant="outline-primary" className="button-seller-outline" style={{ borderRadius: '16px' }}>Edit</Button>
-            </Link>
+            <Button variant="outline-primary" className="button-seller-outline" style={{ borderRadius: '16px', width: '90%' }} onClick={props.onClick}>Edit</Button>
           </Row>
         </Card.Body>
       </Card>

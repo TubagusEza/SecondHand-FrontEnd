@@ -8,6 +8,7 @@ import InputList from '../../Atoms/Input/Input';
 import InputDesc from '../../Atoms/Input/InputDesc';
 import InputCategory from '../../Atoms/Input/InputCategory';
 import './FormInput.Module.css';
+import ProductPage from '../../Organisms/Seller/ProductPage';
 
 const required = (value) => {
   if (!value) {

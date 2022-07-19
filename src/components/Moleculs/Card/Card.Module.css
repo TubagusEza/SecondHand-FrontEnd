@@ -5,6 +5,7 @@
   border-radius: 10px;
   margin-bottom: 2.5%;
   max-height: 300px;
+  z-index: 1;
 }
 
 .card.items-offering {

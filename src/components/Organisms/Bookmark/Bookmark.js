@@ -72,26 +72,6 @@ function Bookmark({ wishlist }) {
             </Col>
           );
         })}
-        {/* <Col xs={10}>
-          {wishlist && wishlist.map((list) => {
-            let user = 'buyer';
-            let preview = '';
-            if (!!userData && (userData.data.id.toString() === list.sellerId.toString())) {
-              user = 'seller';
-              preview = '/preview';
-            }
-            return (
-              <Link to={`${user}/product/${list.id}${preview}`} style={{ textDecoration: 'none', color: 'black' }}>
-                <CardBookmark
-                  title={list.product.name}
-                  type={list.product.category.name}
-                  price={priceFormat(list.product.price)}
-                  image={list.product.images[0]}
-                />
-              </Link>
-            );
-          })}
-        </Col> */}
       </Row>
     </Container>
   );
