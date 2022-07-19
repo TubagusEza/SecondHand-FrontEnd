@@ -3,8 +3,8 @@ import { Container } from 'react-bootstrap';
 import { useSelector, useDispatch } from 'react-redux';
 import { getListProducts } from '../redux/actions/product';
 import { getListNotifications } from '../redux/actions/getNotif';
+import { getListUser } from '../redux/actions/listUser';
 import TemplateHome from '../components/Templates/Homepage/TemplateHome';
-// import PaginatedItems from '../components/Moleculs/Pagination/Pagination';
 
 function Homepage() {
   const dispatch = useDispatch();
@@ -12,32 +12,49 @@ function Homepage() {
   const [notif, setNotif] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [meta, setMeta] = useState({});
+  const [user, setUser] = useState([]);
+  const [active, setActive] = useState([]);
 
   const {
-    notifLoading,
+    userResult,
+  // eslint-disable-next-line arrow-body-style
+  } = useSelector((state) => state.getListUserReducer);
+
+  const {
     notifResult,
-    notifError,
   // eslint-disable-next-line arrow-body-style
   } = useSelector((state) => state.getListNotifications);
 
   const {
-    productLoading,
     productResult,
-    productError,
   // eslint-disable-next-line arrow-body-style
   } = useSelector((state) => state.getProductReducer);
 
   const {
-    productMetaLoading,
     productMetaResult,
-    productMetaError,
   // eslint-disable-next-line arrow-body-style
   } = useSelector((state) => state.getProductMetaReducer);
 
+  const getLoginUser = async () => {
+    dispatch(getListUser());
+  };
+
   useEffect(() => {
-    dispatch(getListProducts(1));
+    if (userResult) {
+      setUser(userResult);
+    }
+  }, [userResult]);
+
+  useEffect(() => {
+    getLoginUser();
+  }, []);
+
+  useEffect(() => {
+    dispatch(getListProducts({
+      buyer: userResult.id,
+    }));
     dispatch(getListNotifications());
-  }, [dispatch]);
+  }, [userResult]);
 
   useEffect(() => {
     if (productResult) {
@@ -70,7 +87,6 @@ function Homepage() {
             meta={meta}
             productResult={productResult}
           />
-          {/* <PaginatedItems /> */}
         </Container>
       </div>
       )}

@@ -11,8 +11,9 @@ import CardDescription from '../../Moleculs/Card/CardDescription';
 // import './Input.Module.css';
 
 function ProductPage({
-  productById, categoryName, productImage, seller, city,
+  productById, categoryName, productImage, seller, city, active,
 }) {
+  console.log(active);
   return (
     <Container className="mt-5">
       <Row>
@@ -20,7 +21,7 @@ function ProductPage({
           <CarouselProduct productImage={productImage} />
         </Col>
         <Col md={6}>
-          <CardBargain productById={productById} categoryName={categoryName} />
+          <CardBargain productById={productById} categoryName={categoryName} active={active} />
           <CardSeller seller={seller} city={city} />
         </Col>
         <CardDescription productById={productById} />

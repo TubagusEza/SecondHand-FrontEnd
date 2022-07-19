@@ -1,12 +1,16 @@
 /* eslint-disable react/prop-types */
-import React from 'react';
-import { Card, Row, Col } from 'react-bootstrap';
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+import {
+  Card, Row, Col, Button,
+} from 'react-bootstrap';
 import { BsBookmark } from 'react-icons/bs';
+import { FaBookmark } from 'react-icons/fa';
 import './Card.Module.css';
 
 function ItemCard(props) {
   const {
-    title, type, price, image, imageAlt,
+    title, type, price, image, imageAlt, active,
   } = props;
 
   return (
@@ -20,7 +24,13 @@ function ItemCard(props) {
             <Card.Text style={{ fontWeight: '400' }}>{price}</Card.Text>
           </Col>
           <Col xs={3}>
-            <BsBookmark />
+            {/* <Link to="/list/bookmark"> */}
+            {!active ? (
+              <BsBookmark className="icon-bookmark" />
+            ) : (
+              <FaBookmark className="icon-bookmark" />
+            )}
+            {/* </Link> */}
           </Col>
         </Row>
       </Card.Body>

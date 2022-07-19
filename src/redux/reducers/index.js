@@ -14,6 +14,8 @@ import { updateTransactionReducer } from './updateTransactionReducer';
 import { updateTransactionConfirmationReducer } from './updateTransactionConfirmation';
 import { getSoldProductReducer } from './soldProductReducer';
 import { getHistoryBuyerReducer } from './historyBuyer';
+import { createWishlistReducer } from './createWishlist';
+import { getListUserReducer } from './listUser';
 
 export default combineReducers({
   auth,
@@ -31,4 +33,6 @@ export default combineReducers({
   updateTransactionConfirmationReducer,
   getSoldProductReducer,
   getHistoryBuyerReducer,
+  createWishlistReducer,
+  getListUserReducer,
 });

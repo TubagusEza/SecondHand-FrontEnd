@@ -5,7 +5,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
-import { Container, Col } from 'react-bootstrap';
+import { BsBookmark } from 'react-icons/bs';
+import { Container, Col, Button } from 'react-bootstrap';
 import Carousel from '../../Moleculs/Carousel/CarouselHomepage';
 import TitleList from '../../Atoms/Title/Title';
 import ButtonCategory from '../../Atoms/Button/ButtonCategory';
@@ -83,8 +84,12 @@ function Home({
                       price={priceFormat(result.price)}
                       image={result.images[0]}
                       imageAlt="Category of Different Pics"
+                      active={result.markedByUser}
                     />
                   </Link>
+                  {/* <Button className="btn-bookmark">
+                    <BsBookmark style={{ zIndex: '2', color: 'black', paddingBottom: '2px' }} />
+                  </Button> */}
                 </Col>
               </>
             );
