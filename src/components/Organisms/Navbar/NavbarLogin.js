@@ -3,16 +3,19 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link, Navigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faList } from '@fortawesome/free-solid-svg-icons';
+import {
+  faList, faPenToSquare, faCartShopping, faRightFromBracket,
+  faBookmark, faHourglassStart, faHourglassEnd,
+} from '@fortawesome/free-solid-svg-icons';
 import {
   Navbar, Container, Nav, Form, Row, Col, Toast, Button, ToastContainer, Dropdown,
 } from 'react-bootstrap';
 import {
-  FaSearch, FaBell, FaRegUser, FaListUl,
+  FaSearch, FaBell, FaRegUser,
 } from 'react-icons/fa';
 import { logout } from '../../../redux/actions/auth';
 import CardToast from '../../Moleculs/Card/CardToast';
@@ -64,9 +67,21 @@ function NavbarLogin({ notif }) {
                     }}
                   />
                 </Dropdown.Toggle>
-                <Dropdown.Menu>
-                  <Dropdown.Item href="../../../history/seller">History Seller</Dropdown.Item>
-                  <Dropdown.Item href="../../../history/buyer">History Buyer</Dropdown.Item>
+                <Dropdown.Menu style={{ width: '200px', borderRadius: '10px' }}>
+                  <Dropdown.Item href="../../../history/seller">
+                    <FontAwesomeIcon
+                      icon={faHourglassStart}
+                      style={{ color: '#7126B5', width: '40px' }}
+                    />
+                    History Seller
+                  </Dropdown.Item>
+                  <Dropdown.Item href="../../../history/buyer">
+                    <FontAwesomeIcon
+                      icon={faHourglassEnd}
+                      style={{ color: '#7126B5', width: '40px' }}
+                    />
+                    History Buyer
+                  </Dropdown.Item>
                 </Dropdown.Menu>
               </Dropdown>
               <Button
@@ -91,10 +106,35 @@ function NavbarLogin({ notif }) {
                 >
                   <FaRegUser className="link" />
                 </Dropdown.Toggle>
-                <Dropdown.Menu>
-                  <Dropdown.Item href="../../profile">Profile</Dropdown.Item>
-                  <Dropdown.Item href="../../../list/products">Daftar Jual Saya</Dropdown.Item>
-                  <Dropdown.Item onClick={logOut}>Logout</Dropdown.Item>
+                <Dropdown.Menu style={{ width: '200px', borderRadius: '10px' }}>
+                  <Dropdown.Item href="../../profile">
+                    <FontAwesomeIcon
+                      icon={faPenToSquare}
+                      style={{ color: '#7126B5', width: '40px' }}
+                    />
+                    Profile
+                  </Dropdown.Item>
+                  <Dropdown.Item href="../../../list/products">
+                    <FontAwesomeIcon
+                      icon={faCartShopping}
+                      style={{ color: '#7126B5', width: '40px' }}
+                    />
+                    Daftar Jual
+                  </Dropdown.Item>
+                  <Dropdown.Item href="../../list/bookmark">
+                    <FontAwesomeIcon
+                      icon={faBookmark}
+                      style={{ color: '#7126B5', width: '40px' }}
+                    />
+                    Daftar Simpan
+                  </Dropdown.Item>
+                  <Dropdown.Item onClick={logOut}>
+                    <FontAwesomeIcon
+                      icon={faRightFromBracket}
+                      style={{ color: '#7126B5', width: '40px' }}
+                    />
+                    Logout
+                  </Dropdown.Item>
                 </Dropdown.Menu>
               </Dropdown>
             </Nav>
