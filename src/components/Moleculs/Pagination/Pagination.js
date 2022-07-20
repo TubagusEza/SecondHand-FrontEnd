@@ -42,8 +42,9 @@ function PaginatedItems({ currentPage, meta }) {
         totalElements={totalElements}
         onPageChangeCallback={(e) => { console.log(e); handleChangePage(e); }}
         pageBoxStyle={{
-          marginLeft: '25px',
+          // marginLeft: '25px',
           textAlign: 'center',
+
         }}
         activePageBoxStyle={{
           fontWeight: 'bolder',

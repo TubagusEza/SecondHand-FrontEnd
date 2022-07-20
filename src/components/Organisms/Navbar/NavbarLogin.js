@@ -9,7 +9,7 @@ import { Link, Navigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faList } from '@fortawesome/free-solid-svg-icons';
 import {
-  Navbar, Container, Nav, Form, Row, Col, Toast, Button, ToastContainer, Dropdown,
+  Navbar, Container, Nav, Form, Row, Col, Toast, Button, ToastContainer, Dropdown, Offcanvas,
 } from 'react-bootstrap';
 import {
   FaSearch, FaBell, FaRegUser, FaListUl,
@@ -34,9 +34,18 @@ function NavbarLogin({ notif }) {
     <>
       <Navbar className="ms-auto navbar" bg="white" expand="lg">
         <Container fluid className="me-3">
-          <Navbar.Brand href="../../../" className="logo" />
+          <Navbar.Brand href="../../../" className="navbar-desktop logo" />
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
-          <Navbar.Collapse id="basic-navbar-nav">
+          <Form className="d-flex test">
+            <input
+              type="search"
+              placeholder="Cari di sini..."
+              className="me-2 searchBar searchbar-desktop"
+              aria-label="Search"
+            />
+            <i className="searchIcon" type="button"><FaSearch /></i>
+          </Form>
+          <Navbar.Collapse className="navbar-desktop" id="basic-navbar-nav">
             <Form className="d-flex test">
               <input
                 type="search"
@@ -99,6 +108,72 @@ function NavbarLogin({ notif }) {
               </Dropdown>
             </Nav>
           </Navbar.Collapse>
+          <div className="navbar-mobile">
+            <Navbar.Offcanvas style={{ width: '250px' }} id="basic-navbar-nav">
+              <Offcanvas.Header closeButton>
+                <Offcanvas.Title>
+                  SecondHand
+                </Offcanvas.Title>
+              </Offcanvas.Header>
+              <Offcanvas.Body>
+                <Nav className="flex justify-content-end nav">
+                  <Nav.Link href="../../../list/notifications">Notifikasi</Nav.Link>
+                  <Nav.Link href="../../../list/products">Daftar Jual</Nav.Link>
+                  <Nav.Link href="../../profile">Akun Saya</Nav.Link>
+                  {/* <Dropdown className="mt-1">
+                    <Dropdown.Toggle
+                      className="btn-toggle"
+                      style={{
+                        backgroundColor: 'transparent',
+                        color: 'black',
+                        border: 'none',
+                        zIndex: '1',
+                      }}
+                    >
+                      <FontAwesomeIcon
+                        icon={faList}
+                        style={{
+                          zIndex: 2,
+                        }}
+                      />
+                    </Dropdown.Toggle>
+                    <Dropdown.Menu>
+                      <Dropdown.Item href="../../../history/seller">History Seller</Dropdown.Item>
+                      <Dropdown.Item href="../../../history/buyer">History Buyer</Dropdown.Item>
+                    </Dropdown.Menu>
+                  </Dropdown>
+                  <Button
+                    onClick={() => { return setShow(true); }}
+                    style={{
+                      backgroundColor: 'transparent',
+                      border: 'none',
+                      overflow: 'hidden',
+                    }}
+                  >
+                    <FaBell className="link" />
+                  </Button>
+                  <Dropdown className="mt-1">
+                    <Dropdown.Toggle
+                      className="btn-toggle"
+                      style={{
+                        backgroundColor: 'transparent',
+                        color: 'black',
+                        border: 'none',
+                        zIndex: '1',
+                      }}
+                    >
+                      <FaRegUser className="link" />
+                    </Dropdown.Toggle>
+                    <Dropdown.Menu>
+                      <Dropdown.Item href="../../profile">Profile</Dropdown.Item>
+                      <Dropdown.Item href="../../../list/products">Daftar Jual Saya</Dropdown.Item>
+                      <Dropdown.Item onClick={logOut}>Logout</Dropdown.Item>
+                    </Dropdown.Menu>
+                  </Dropdown> */}
+                </Nav>
+              </Offcanvas.Body>
+            </Navbar.Offcanvas>
+          </div>
         </Container>
       </Navbar>
       <Row>

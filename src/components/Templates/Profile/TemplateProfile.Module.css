@@ -48,7 +48,7 @@
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.15);
 }
 
-@media (max-width: 445px){
+@media (max-width: 600px){
   .profile {
       top: 10px;
       justify-content: center;
@@ -56,5 +56,9 @@
       max-width: 90%;
       max-height: 50%;
       overflow-y: hidden;
+  }
+
+  .back-btn-mobile {
+    display: none;
   }
 }
