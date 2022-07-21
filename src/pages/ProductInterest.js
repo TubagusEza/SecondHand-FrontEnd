@@ -1,5 +1,6 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import axios from 'axios';
+import { Container } from 'react-bootstrap';
 import { useSelector, useDispatch } from 'react-redux';
 import { getListNotifications } from '../redux/actions/getNotif';
 import { getListProductInterest } from '../redux/actions/productInterest';
@@ -71,13 +72,15 @@ function ProductInterest() {
 
   return (
     <div>
-      <TemplateProductInterest
-        notif={notif}
-        sellerName={sellerName}
-        sellerCity={sellerCity}
-        sellerPhoto={sellerPhoto}
-        interest={interest}
-      />
+      <Container fluid className="p-0">
+        <TemplateProductInterest
+          notif={notif}
+          sellerName={sellerName}
+          sellerCity={sellerCity}
+          sellerPhoto={sellerPhoto}
+          interest={interest}
+        />
+      </Container>
     </div>
   );
 }
