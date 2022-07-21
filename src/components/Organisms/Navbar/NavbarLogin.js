@@ -73,7 +73,7 @@ function NavbarLogin({ notif }) {
                 aria-label="Search"
                 onChange={handleChangeSearch}
               />
-              <Button className="searchIcon" type="submit"><FaSearch /></Button>
+              <Button className="searchIcon" type="submit"><FaSearch style={{ color: '#8A8A8A' }} /></Button>
             </Form>
             <Nav className="flex-grow-1 justify-content-end nav">
               <Dropdown className="mt-1">

@@ -3,20 +3,21 @@
 import { createProduct } from '../actions/createProduct';
 
 const initialState = {
-  productLoading: false,
-  productResult: false,
-  productError: false,
+  createProductLoading: false,
+  createProductResult: false,
+  createProductError: false,
 };
 
 export const getProductReducer = (state = initialState, action) => {
   switch (action.type) {
     case 'createProduct':
       console.log(action.payload);
+      console.log('lewat 15');
       return {
         ...state,
-        productLoading: action.payload.loading,
-        productResult: action.payload.result,
-        productError: action.payload.error,
+        createProductLoading: action.payload.loading,
+        createProductResult: action.payload.result,
+        createProductError: action.payload.error,
       };
     default:
       return state;

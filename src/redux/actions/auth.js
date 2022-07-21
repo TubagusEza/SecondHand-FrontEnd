@@ -8,6 +8,7 @@ import {
   LOGIN_FAIL,
   LOGOUT,
   SET_MESSAGE,
+  SET_CURRENT_USER,
 } from './types';
 import AuthService from '../services/auth.service';
 
@@ -72,6 +73,12 @@ export const login = (email, password) => {
   };
 };
 
+export const setCurrentUser = (user) => {
+  return {
+    type: SET_CURRENT_USER,
+    payload: user,
+  };
+};
 export const logout = () => (dispatch) => {
   AuthService.logout();
   dispatch({

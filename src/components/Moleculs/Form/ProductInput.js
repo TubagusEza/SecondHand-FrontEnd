@@ -9,6 +9,7 @@ import InputDesc from '../../Atoms/Input/InputDesc';
 import InputCategory from '../../Atoms/Input/InputCategory';
 import './FormInput.Module.css';
 import ProductPage from '../../Organisms/Seller/ProductPage';
+import getUser from '../../../utils/decodeToken';
 
 const required = (value) => {
   if (!value) {
@@ -21,7 +22,8 @@ const required = (value) => {
 };
 
 function ProductInput({
-  name, price, categoryId, description,
+  name, price, categoryId, description, onChangeName,
+  onChangePrice, onChangeCategory, onChangeDescription,
 }) {
   const [isLoggedIn, setIsLoggedIn] = useState(true);
   const [successful, setSuccessful] = useState(false);
@@ -29,6 +31,9 @@ function ProductInput({
   const checkBtn = useRef();
 
   const token = localStorage.getItem('token');
+  if (getUser().toLogin) {
+    <Navigate to="/login" replace />;
+  }
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -84,7 +89,7 @@ function ProductInput({
             type="name"
             placeholder="Nama"
             value={name}
-            onChange={name}
+            onChange={onChangeName}
             validations={[required]}
           />
         </Form.Group>
@@ -94,7 +99,7 @@ function ProductInput({
             type="price"
             placeholder="Rp, 00"
             value={price}
-            onChange={price}
+            onChange={onChangePrice}
             validations={[required]}
           />
         </Form.Group>
@@ -108,7 +113,7 @@ function ProductInput({
             type="description"
             placeholder="Contoh: Produk ini merupakan..."
             value={description}
-            onChange={description}
+            onChange={onChangeDescription}
             validations={[required]}
           />
         </Form.Group>

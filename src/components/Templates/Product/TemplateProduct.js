@@ -1,8 +1,9 @@
+/* eslint-disable react/jsx-no-bind */
 /* eslint-disable consistent-return */
 /* eslint-disable array-callback-return */
 /* eslint-disable radix */
 import React, { useState, useEffect, useRef } from 'react';
-import { Link, Navigate, useParams } from 'react-router-dom';
+import { Link, Navigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import {
@@ -10,10 +11,13 @@ import {
 } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import { createListProduct } from '../../../redux/actions/createProduct';
+import { getUserId } from '../../../redux/actions/getUserId';
+import { getCategoryId } from '../../../redux/actions/getCategoryId';
 import NavbarProduct from '../../Organisms/Navbar/NavbarProduct';
 import ProductInput from '../../Moleculs/Form/ProductInput';
 import './TemplateProduct.Module.css';
 import ProductPage from '../../Organisms/Seller/ProductPage';
+import { getListUser } from '../../../redux/actions/listUser';
 
 function TemplateProduct() {
   // Data Input Product
@@ -21,6 +25,7 @@ function TemplateProduct() {
   const [price, setPrice] = useState('');
   const [categoryId, setCategoryId] = useState('');
   const [description, setDescription] = useState('');
+  const [carousel, setCarousel] = useState('');
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState(false);
   const [preview, setPreview] = useState(false);
@@ -38,23 +43,38 @@ function TemplateProduct() {
   // eslint-disable-next-line arrow-body-style
   } = useSelector((state) => state.getListUserReducer);
 
-  useEffect(() => {
-    if (userResult) {
-      setUser(userResult);
-    }
-  }, [userResult]);
-  // console.log(userResult);
   const {
-    productLoading,
-    productResult,
-    productError,
+    categoryLoading,
+    categoryResult,
+    categoryError,
+  } = useSelector((state) => { return state.getCategoryIdReducer; });
+
+  const {
+    userIDLoading,
+    userIDResult,
+    userIDError,
+  } = useSelector((state) => { return state.getUserIdReducer; });
+
+  const {
+    createProductLoading,
+    createProductResult,
+    createProductError,
   } = useSelector((state) => { return state.getProductReducer; });
-  // console.log(preview);
+
   const handlePreview = (e) => {
     console.log(preview, 'duluan');
-    setPreview(true);
+    setPreview(!(preview || false));
     console.log(preview, 'lewat bosku');
   };
+
+  const getUser = () => {
+    dispatch(getListUser());
+  };
+  console.log(inputName);
+  useEffect(() => {
+    getUser();
+  }, []);
+
   async function handleSubmit(e) {
     e.preventDefault();
     const body = {
@@ -66,6 +86,22 @@ function TemplateProduct() {
     console.log(body);
     await dispatch(createListProduct(image, body));
   }
+
+  const handleChangeName = (e) => {
+    setInputName(e);
+  };
+
+  const handleChangePrice = (e) => {
+    setPrice(e);
+  };
+
+  const handleChangeCategory = (e) => {
+    setCategoryId(e);
+  };
+
+  const handleChangeDescription = (e) => {
+    setDescription(e);
+  };
 
   const handleChangeImage = (e) => {
     fileObj.push(e.target.files);
@@ -93,23 +129,43 @@ function TemplateProduct() {
   };
 
   useEffect(() => {
-    if (productLoading) {
+    setCarousel(image);
+  }, [image]);
+
+  useEffect(() => {
+    if (userResult) {
+      setUser(userResult);
+      dispatch(getUserId(userResult.id));
+    }
+  }, [userResult]);
+  console.log(userResult);
+
+  useEffect(() => {
+    if (categoryId) {
+      console.log(categoryId);
+      // setCategoryName(categoryResult);
+      dispatch(getCategoryId(parseInt(categoryId)));
+    }
+  }, [categoryId]);
+
+  useEffect(() => {
+    console.log(createProductLoading, createProductResult);
+    if (createProductLoading) {
       setLoading(true);
-    } else if (productResult) {
+      console.log('lewat sini');
+    } else if (createProductResult) {
       setLoading(false);
       window.location.reload();
-      console.log(productResult);
-    } else if (productError) {
-      console.log(productError);
-      setLoading(false);
+      console.log(createProductResult);
+    } else if (createProductError) {
+      console.log(createProductError);
     }
-  });
+  }, [createProductLoading]);
 
-  if (productResult) {
-    return <Navigate to="/" />;
+  if (createProductResult) {
+    return <Navigate to="/list/products" />;
   }
-
-  console.log(preview);
+  console.log(categoryResult, userResult, userIDResult, inputName, description, price);
   return (
     <>
       <NavbarProduct />
@@ -125,10 +181,14 @@ function TemplateProduct() {
                     </Link>
                   </div>
                   <ProductInput
-                    name={setInputName}
-                    price={setPrice}
+                    name={inputName}
+                    onChangeName={handleChangeName}
+                    price={price}
+                    onChangePrice={handleChangePrice}
                     categoryId={setCategoryId}
-                    description={setDescription}
+                    onChangeCategory={handleChangeCategory}
+                    description={description}
+                    onChangeDescription={handleChangeDescription}
                   />
                   <Form.Group className="mb-3" controlId="productPhoto">
                     <Form.Label>Foto Produk</Form.Label>
@@ -159,11 +219,11 @@ function TemplateProduct() {
                   </Button>
                 </Col>
                 <Col xs={6}>
-                  <Button variant="primary" className="publish-button" type="submit" disabled={loading}>
+                  <Button variant="primary" className="publish-button" type="submit">
+                    Terbitkan
                     {loading && (
                     <span className="spinner-border spinner-border-sm me-2" />
                     )}
-                    <span>Terbitkan</span>
                   </Button>
                 </Col>
               </Row>
@@ -172,12 +232,17 @@ function TemplateProduct() {
         </div>
       ) : (
         <ProductPage
-          productById={{ name: 'BTS', price: 200000, description: 'wkwkwkk' }}
-          categoryName="Barang"
+          productById={{
+            name: inputName,
+            price,
+            description,
+          }}
+          categoryName={categoryResult.name}
           productImage={[]}
-          seller={{ name: 'Safira Tjantik' }}
-          city={{ name: 'Citayem' }}
+          seller={userResult}
+          city={userIDResult.city}
           onClick={handlePreview}
+          onPublish={handleSubmit}
         />
       ) }
     </>

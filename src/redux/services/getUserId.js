@@ -4,10 +4,10 @@ import checkUser from '../../utils/decodeToken';
 
 const token = localStorage.getItem('token');
 
-export default function getUser() {
+export default function getIdUser(id) {
   return axios
     // eslint-disable-next-line prefer-template
-    .get('https://second-hand-be.herokuapp.com/api/who-am-i', {
+    .get(`https://second-hand-be.herokuapp.com/api/user/${id}`, {
       headers: {
         Authorization: `Bearer ${token}`,
       },

@@ -1,12 +1,18 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { Navigate } from 'react-router-dom';
 import TemplateNotification from '../components/Templates/Notification/TemplateNotification';
 import { getListNotifications } from '../redux/actions/getNotif';
+import getUser from '../utils/decodeToken';
 
 function Notification() {
+  const token = localStorage.getItem('token');
   const dispatch = useDispatch();
   const [notif, setNotif] = useState([]);
 
+  if (!token || getUser().toLogin) {
+    return (<Navigate to="/login" replace />);
+  }
   const {
     notifLoading,
     notifResult,

@@ -10,6 +10,7 @@ export const createListProduct = (image, body) => {
   const url = [];
   return async (dispatch) => {
     // Loading
+    console.log('lewat 13');
     dispatch({
       type: createProduct,
       payload: {
@@ -18,6 +19,7 @@ export const createListProduct = (image, body) => {
         error: false,
       },
     });
+    console.log('lewat 22');
     // GET API USER
     const token = localStorage.getItem('token');
     await axios.get('https://second-hand-be.herokuapp.com/api/who-am-i', {

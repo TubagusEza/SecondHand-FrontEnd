@@ -13,3 +13,6 @@ export const GET_HISTORY_BUYER = 'GET_HISTORY_BUYER';
 export const CREATE_WISHLIST = 'CREATE_WISHLIST';
 export const GET_WISHLIST = 'GET_WISHLIST';
 export const GET_LIST_USER = 'GET_LIST_USER';
+export const SET_CURRENT_USER = 'GET_CURRENT-USER';
+export const GET_USER_ID = 'GET_USER_ID';
+export const GET_CATEGORY_ID = 'GET_CATEGORY_ID';

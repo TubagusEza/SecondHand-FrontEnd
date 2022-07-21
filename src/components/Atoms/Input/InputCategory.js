@@ -18,23 +18,6 @@ function InputCategory({ inputCategory }) {
 
   const token = localStorage.getItem('token');
 
-  const getUsers = async () => {
-    try {
-      const responseUsers = await axios.get(
-        'https://second-hand-be.herokuapp.com/api/who-am-i',
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        },
-      );
-      const dataUsers = await responseUsers;
-      setData(dataUsers);
-    } catch (err) {
-      console.log(err);
-    }
-  };
-
   axios.get(
     'https://second-hand-be.herokuapp.com/api/categories',
     {
@@ -61,7 +44,6 @@ function InputCategory({ inputCategory }) {
     });
 
   useEffect(() => {
-    getUsers();
   }, [categoryId]);
 
   const categoryStyles = {
@@ -78,6 +60,7 @@ function InputCategory({ inputCategory }) {
   };
 
   const handleGetValue = (e) => {
+    console.log(e);
     inputCategory(e.value);
   };
 

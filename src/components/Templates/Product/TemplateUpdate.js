@@ -161,7 +161,7 @@ function TemplateUpdate() {
             </Row>
             <Row className={`${IsMobile ? 'mb-1' : 'mx-5 mb-5'}`}>
               <Col xs={6}>
-                <Link to="/seller/product/:id">
+                <Link to={`/seller/product/${params.id}`}>
                   <Button variant="primary" className="preview-button" type="submit">
                     Preview
                   </Button>

@@ -7,6 +7,7 @@ export const updateProfile = 'updateProfile';
 export const updateListProfile = (image, body) => {
   return async (dispatch) => {
   // Loading
+    console.log('lewat 10');
     dispatch({
       type: updateProfile,
       payload: {
@@ -15,6 +16,7 @@ export const updateListProfile = (image, body) => {
         error: false,
       },
     });
+    console.log('lewat 19');
     // GET API USER
     const token = localStorage.getItem('token');
     await axios.get('https://second-hand-be.herokuapp.com/api/who-am-i', {
@@ -78,7 +80,7 @@ export const updateListProfile = (image, body) => {
           })
           .catch((err) => {
             dispatch({
-              type: getCloudinary,
+              type: updateProfile,
               payload: {
                 loading: false,
                 result: false,
@@ -89,7 +91,7 @@ export const updateListProfile = (image, body) => {
       })
       .catch((err) => {
         dispatch({
-          type: getUserId,
+          type: updateProfile,
           payload: {
             loading: false,
             result: false,

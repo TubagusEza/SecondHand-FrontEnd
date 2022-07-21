@@ -38,6 +38,8 @@
     padding: 10px;
     padding-right: 10px;
     color: #8A8A8A;
+    background-color: transparent !important;
+    border-color: transparent !important;
 }
 
 .menu,

@@ -17,6 +17,8 @@ import { getHistoryBuyerReducer } from './historyBuyer';
 import { createWishlistReducer } from './createWishlist';
 import { getWishlistReducer } from './wishlist';
 import { getListUserReducer } from './listUser';
+import { getUserIdReducer } from './getUserId';
+import { getCategoryIdReducer } from './getCategoryId';
 
 export default combineReducers({
   auth,
@@ -37,4 +39,6 @@ export default combineReducers({
   createWishlistReducer,
   getListUserReducer,
   getWishlistReducer,
+  getUserIdReducer,
+  getCategoryIdReducer,
 });

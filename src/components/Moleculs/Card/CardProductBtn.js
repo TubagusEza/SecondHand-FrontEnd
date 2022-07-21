@@ -35,7 +35,7 @@ function CardProductBtn({ productById, categoryName }) {
   useEffect(() => {
     getProduct();
   }, []);
-
+  console.log('lewat sini');
   return (
     <Container>
       <Card className="card-product-btn" style={{ borderRadius: '16px' }}>

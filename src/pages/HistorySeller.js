@@ -1,10 +1,11 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import axios from 'axios';
+import { Navigate } from 'react-router-dom';
 import { getListNotifications } from '../redux/actions/getNotif';
 import { getSoldProductByID } from '../redux/actions/soldProduct';
 import TemplateHistorySeller from '../components/Templates/History/TemplateHistorySeller';
-import getUser from '../redux/services/getUser';
+import getUser from '../utils/decodeToken';
 
 function HistorySeller() {
   const token = localStorage.getItem('token');
@@ -15,7 +16,9 @@ function HistorySeller() {
   const [sellerCity, setSellerCity] = useState('');
   const [sellerID, setSellerID] = useState(null);
   const [soldProductSeller, setSoldProductSeller] = useState([]);
-
+  if (!token || getUser().toLogin) {
+    return (<Navigate to="/login" replace />);
+  }
   const {
     notifResult,
   // eslint-disable-next-line arrow-body-style

@@ -12,8 +12,9 @@ import IsMobile from '../../../styles/IsMobile';
 // import './Input.Module.css';
 
 function ProductPage({
-  productById, categoryName, productImage, seller, city, onClick,
+  productById, categoryName, productImage, seller, city, onClick, onPublish,
 }) {
+  console.log(categoryName);
   return (
     <Container className={`${IsMobile ? 'mt-2' : 'mt-5'}`}>
       <Row>
@@ -21,7 +22,7 @@ function ProductPage({
           <CarouselProduct productImage={productImage} />
         </Col>
         <Col md={6}>
-          <CardProduct productById={productById} categoryName={categoryName} onClick={onClick} />
+          <CardProduct productById={productById} categoryName={categoryName} onClick={onClick} onPublish={onPublish} />
           <CardSeller seller={seller} city={city} />
         </Col>
         <CardDescription productById={productById} />

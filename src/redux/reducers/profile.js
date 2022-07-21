@@ -12,6 +12,7 @@ export const getProfileReducer = (state = initialState, action) => {
   switch (action.type) {
     case 'updateProfile':
       console.log(action.payload);
+      console.log('lewat 15');
       return {
         ...state,
         profileLoading: action.payload.loading,

@@ -3,6 +3,7 @@ import {
   Routes,
   Route,
 } from 'react-router-dom';
+// import jwt from 'jsonwebtoken';
 import { Provider } from 'react-redux';
 import store from './store';
 import Homepage from './pages';
@@ -18,13 +19,27 @@ import ListProduct from './pages/ListProduct';
 import HistorySeller from './pages/HistorySeller';
 import HistoryBuyer from './pages/HistoryBuyer';
 import OfferingInfo from './pages/OfferingInfo';
-import OfferingAccept from './pages/OfferingAccept';
 import ProductInterest from './pages/ProductInterest';
 import Notification from './pages/Notification';
 import ListBookmark from './pages/ListBookmark';
+import authHeader from './redux/services/auth-header';
+import { logout, setCurrentUser } from './redux/actions/auth';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
+  // if (localStorage.token) {
+  //   authHeader(localStorage.token);
+
+  //   jwt.verify(localStorage.token, 'Token', (err, decode) => {
+  //     if (err) {
+  //       store.dispatch(logout());
+  //     } else {
+  //       // console.log(decode);
+  //       store.dispatch(setCurrentUser(decode));
+  //     }
+  //   });
+  // }
+
   return (
     <Provider store={store}>
       <BrowserRouter>
@@ -44,7 +59,6 @@ function App() {
           <Route path="/history/seller" element={<HistorySeller />} />
           <Route path="/history/buyer" element={<HistoryBuyer />} />
           <Route path="/offering/:buyerId/info" element={<OfferingInfo />} />
-          {/* <Route path="/offering/accept" element={<OfferingAccept />} /> */}
           <Route path="/list/bookmark" element={<ListBookmark />} />
         </Routes>
       </BrowserRouter>

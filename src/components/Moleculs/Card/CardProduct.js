@@ -3,9 +3,8 @@
 /* eslint-disable no-tabs */
 /* eslint-disable react/jsx-indent */
 /* eslint-disable array-callback-return */
-import React, { useEffect, useState, useCallback } from 'react';
-import axios from 'axios';
-import { Link, useParams } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { useParams, Navigate } from 'react-router-dom';
 import {
   Container,
   Row,
@@ -13,6 +12,7 @@ import {
   Button,
 } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import getUser from '../../../utils/decodeToken';
 import priceFormat from '../../../utils/priceFormat';
 import './Card.Module.css';
 
@@ -21,31 +21,26 @@ function CardProduct(props) {
 
   const [productById, setProductById] = useState([]);
 
-  const fetchData = useCallback(async () => {
-    const productId = `https://second-hand-be.herokuapp.com/api/product/${params.id}`;
-
-    const response = await axios.get(productId);
-    console.log(response.data.category);
-    setProductById(response.data);
-  });
+  const token = localStorage.getItem('token');
+  if (getUser().toLogin) {
+    <Navigate to="/login" replace />;
+  }
 
   useEffect(() => {
-    fetchData();
     document.title = 'Produk Pembeli';
   }, []);
-
+  console.log(props.onPublish);
   return (
     <Container>
       <Card className="card-product" style={{ borderRadius: '16px' }}>
         <Card.Body>
 					<h5 style={{ fontWeight: 'bold' }}>
-            {productById.name}
+            {props.productById.name}
           </h5>
-          <p>{priceFormat(productById.price)}</p>
+          <p>{props.categoryName}</p>
+          <p>{priceFormat(props.productById.price)}</p>
           <Row>
-            <Link to="/list/products">
-              <Button variant="primary" className="button-seller" style={{ borderRadius: '16px', backgroundColor: '#7126B5' }}>Terbitkan</Button>
-            </Link>
+            <Button variant="primary" className="button-seller" style={{ borderRadius: '16px', backgroundColor: '#7126B5', width: '90%' }} onClick={props.onPublish}>Terbitkan</Button>
           </Row>
           <Row>
             <Button variant="outline-primary" className="button-seller-outline" style={{ borderRadius: '16px', width: '90%' }} onClick={props.onClick}>Edit</Button>

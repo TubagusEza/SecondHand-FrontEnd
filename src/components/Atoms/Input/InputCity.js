@@ -1,10 +1,13 @@
 /* eslint-disable react/jsx-indent */
 /* eslint-disable react/prop-types */
 import React, { useState, useEffect } from 'react';
+import { useJwt, isExpired, decodeToken } from 'react-jwt';
 import axios from 'axios';
 import { Form } from 'react-bootstrap';
 import Select from 'react-select';
 import './Input.Module.css';
+
+const token = localStorage.getItem('token');
 
 function InputCity({ inputCity }) {
   const [populate, setPopulate] = useState([]);
@@ -15,24 +18,22 @@ function InputCity({ inputCity }) {
     message: '',
   });
 
-  const token = localStorage.getItem('token');
-
-  const getUsers = async () => {
-    try {
-      const responseUsers = await axios.get(
-        'https://second-hand-be.herokuapp.com/api/who-am-i',
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        },
-      );
-      const dataUsers = await responseUsers;
-      setData(dataUsers);
-    } catch (err) {
-      console.log(err);
-    }
-  };
+  // const getUsers = async () => {
+  //   try {
+  //     const responseUsers = await axios.get(
+  //       'https://second-hand-be.herokuapp.com/api/who-am-i',
+  //       {
+  //         headers: {
+  //           Authorization: `Bearer ${token}`,
+  //         },
+  //       },
+  //     );
+  //     const dataUsers = await responseUsers;
+  //     setData(dataUsers);
+  //   } catch (err) {
+  //     console.log(err);
+  //   }
+  // };
 
   axios.get('https://second-hand-be.herokuapp.com/api/cities', {
     headers: {
@@ -58,7 +59,6 @@ function InputCity({ inputCity }) {
     });
 
   useEffect(() => {
-    getUsers();
   }, [populate]);
 
   const cityStyles = {

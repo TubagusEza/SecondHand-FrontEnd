@@ -1,9 +1,11 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import axios from 'axios';
+import { Navigate } from 'react-router-dom';
 import { getListNotifications } from '../redux/actions/getNotif';
 import { getHistoryBuyer } from '../redux/actions/historyBuyer';
 import TemplateHistoryBuyer from '../components/Templates/History/TemplateHistoryBuyer';
+import getUser from '../utils/decodeToken';
 
 function HistoryBuyer() {
   const token = localStorage.getItem('token');
@@ -13,6 +15,10 @@ function HistoryBuyer() {
   const [buyerCity, setBuyerCity] = useState('');
   const [notif, setNotif] = useState([]);
   const [history, setHistory] = useState([]);
+
+  if (!token || getUser().toLogin) {
+    return (<Navigate to="/login" replace />);
+  }
   const {
     notifResult,
   // eslint-disable-next-line arrow-body-style
